@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7faff">
+  <title>10 meses 🤍</title>
+  <style>
+    :root {
+      --ink: #263548;
+      --muted: #68778a;
+      --blue: #6d91bd;
+      --blue-dark: #456b98;
+      --blue-pale: #eef4fb;
+      --line: #e5ebf2;
+      --shadow: 0 24px 70px rgba(42, 67, 96, .10);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 28px 16px;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 10%, rgba(222, 235, 250, .78), transparent 32rem),
+        radial-gradient(ellipse at 90% 95%, rgba(237, 243, 250, .86), transparent 30rem),
+        #f8fafd;
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button { font: inherit; }
+
+    .page { width: min(100%, 470px); }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 8px 13px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .topline-label { display: flex; align-items: center; gap: 8px; }
+
+    .topline-heart {
+      color: var(--blue);
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(27px, 7vw, 39px);
+      border: 1px solid rgba(223, 232, 242, .95);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, .96);
+      box-shadow: var(--shadow);
+    }
+
+    .card::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #d9e8f8, #7197c4, #d9e8f8);
+      content: "";
+    }
+
+    .screen[hidden] { display: none; }
+    .screen.enter { animation: appear .32s ease both; }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(7px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro-mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 21px;
+      border: 1px solid #dce8f5;
+      border-radius: 50%;
+      color: var(--blue-dark);
+      background: var(--blue-pale);
+      font-size: 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--blue-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -.025em;
+      text-align: center;
+    }
+
+    h1 { margin-bottom: 15px; font-size: clamp(35px, 9vw, 47px); line-height: 1.08; }
+    h2 { margin-bottom: 14px; font-size: clamp(27px, 7vw, 35px); line-height: 1.16; }
+    h3 { margin: 0 0 12px; font: 400 25px/1.2 var(--serif); text-align: center; }
+
+    .lead, .copy {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .lead { margin: 0 auto 22px; max-width: 340px; }
+    .copy { margin: 0 auto 22px; }
+    .copy strong { color: var(--ink); font-weight: 600; }
+    .blue-text { color: var(--blue-dark); }
+
+    .rule {
+      width: 44px;
+      height: 1px;
+      margin: 23px auto;
+      background: #dce6f0;
+    }
+
+    .button {
+      min-height: 47px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button:focus-visible { outline: 3px solid #bfd3ea; outline-offset: 3px; }
+
+    .button-primary {
+      color: white;
+      background: var(--blue-dark);
+      box-shadow: 0 8px 18px rgba(69, 107, 152, .19);
+    }
+
+    .button-primary:hover { background: #365c88; }
+
+    .button-soft {
+      color: var(--blue-dark);
+      border-color: var(--line);
+      background: white;
+    }
+
+    .button-full { width: 100%; }
+    .screen-copy { padding-top: 7px; }
+    .screen-copy .copy { margin-bottom: 25px; }
+    .heart-area { text-align: center; }
+
+    .heart-button {
+      width: 88px;
+      height: 88px;
+      display: grid;
+      place-items: center;
+      margin: 7px auto 13px;
+      border: 1px solid #dce8f5;
+      border-radius: 50%;
+      color: var(--blue-dark);
+      background: var(--blue-pale);
+      box-shadow: 0 8px 22px rgba(69, 107, 152, .08);
+      cursor: pointer;
+      font-size: 39px;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .heart-button:hover { transform: scale(1.05); background: #e4eef9; }
+    .heart-button:active { transform: scale(.96); }
+    .heart-button:disabled { cursor: default; }
+
+    .heart-count { margin: 0 0 14px; color: var(--muted); font-size: 12px; }
+
+    .heart-track {
+      width: min(100%, 235px);
+      height: 4px;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: #edf1f6;
+    }
+
+    .heart-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--blue);
+      transition: width .25s ease;
+    }
+
+    .hint { margin: 0 0 17px; color: var(--muted); font-size: 12px; }
+    .option-list { display: grid; gap: 10px; margin: 20px 0 15px; }
+
+    .option-button {
+      width: 100%;
+      min-height: 57px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      color: var(--ink);
+      background: white;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .option-button:hover {
+      transform: translateY(-1px);
+      border-color: #c8d9ec;
+      background: #fafdff;
+    }
+
+    .option-number {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      flex: 0 0 31px;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--blue-dark);
+      background: var(--blue-pale);
+      font: 15px var(--serif);
+    }
+
+    .option-name { flex: 1; font-size: 14px; font-weight: 600; }
+    .option-state { color: var(--muted); font-size: 12px; }
+    .option-button.is-seen .option-state { color: var(--blue-dark); }
+    .all-done { margin-top: 18px; }
+    .all-done[hidden] { display: none; }
+
+    .message-card {
+      margin: 20px 0 25px;
+      padding: 18px 18px 18px 20px;
+      border-left: 2px solid #8cadd2;
+      border-radius: 0 14px 14px 0;
+      color: #4b5a6d;
+      background: #f6f9fd;
+      font: 16px/1.85 var(--serif);
+      text-align: left;
+    }
+
+    .final-heart { margin-bottom: 12px; color: var(--blue); font-size: 27px; text-align: center; }
+    .secret-area { margin: 13px 8px 0; text-align: right; }
+
+    .secret-button {
+      padding: 5px 2px;
+      border: 0;
+      color: #7e8a99;
+      background: transparent;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .secret-button:hover { color: var(--blue-dark); }
+    .secret-text { margin: 7px 0 0; color: var(--blue-dark); font: italic 13px var(--serif); }
+    .secret-text[hidden] { display: none; }
+
+    @media (max-width: 520px) {
+      body { padding: 18px 13px; }
+      .topline { margin-inline: 5px; font-size: 10px; }
+      .card { border-radius: 21px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline">
+      <span class="topline-label"><span class="topline-heart" aria-hidden="true">♡</span> Para ti, chinita</span>
+      <span id="stepIndicator">01 / 06</span>
+    </div>
+
+    <div class="card">
+      <section class="screen enter" id="intro" aria-live="polite">
+        <div class="intro-mark" aria-hidden="true">♡</div>
+        <p class="eyebrow">Quería retomar esto de una mejor forma</p>
+        <h1>Holi, chaparrita 🤍</h1>
+        <p class="lead">
+          Felices 10 mesesotes, diez de toda una vida.<br><br>
+          Como es costumbre… y despues de un par de meses.. no la podía dejar sin su detallito (aunque ya no estoy estudiando esto).
+        </p>
+        <div class="rule"></div>
+        <button class="button button-primary button-full" id="startButton" type="button">Comenzar <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="screen" id="cap1" aria-live="polite" hidden>
+        <p class="eyebrow">Capítulo uno</p>
+        <h2>Gracias por absolutamente todo</h2>
+        <div class="screen-copy">
+          <p class="copy">
+            Creo que despues de tanto he aprendido muchisimo de ti y te lo agradezco demasiado, estos diez meses han sido de lo mejor, estar a tu ladito es todo
+          </p>
+          <p class="copy">
+            Me encanta todito lo que hemos logrado juntas, quien pensaría que ya llevamos DIEZ meses, aun recuerdo perfectamente como te amenacé en mayo del 2025 jaja
+          </p>
+        </div>
+        <button class="button button-primary button-full" id="next1" type="button" aria-label="Siguiente capítulo">Seguir <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="screen" id="cap2" aria-live="polite" hidden>
+        <p class="eyebrow">Capítulo dos</p>
+        <h2>Si tu quieres…</h2>
+        <div class="screen-copy">
+          <p class="copy">
+            Creeme que sí tu quieres con todito el gusto paso el resto de mi vida a tu lado, te doy todo lo que soy, sé que probablemente haya referencias de la carta en esta pagina y visceversa pero tenía que tener referencias uno del otro, se complementan
+          </p>
+          <p class="copy">
+            "Te regalo mis mañanas
+             Te regalo mis palabras
+             Te doy todo hasta mi voz" 🤍
+          </p>
+        </div>
+        <button class="button button-primary button-full" id="next2" type="button" aria-label="Siguiente capítulo">Seguir <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="screen" id="cap3" aria-live="polite" hidden>
+        <h2>Quería retomar algo de la ultima</h2>
+        <p class="copy">Pícale al corazón diez veces 🤍</p>
+        <div class="heart-area">
+          <button class="heart-button" id="heartButton" type="button" aria-label="Dame un corazón">♡</button>
+          <p class="heart-count" id="heartCount" aria-live="polite">0 de 10 corazoncitos</p>
+          <div class="heart-track" aria-hidden="true"><div class="heart-fill" id="heartFill"></div></div>
+          <p class="hint" id="heartHint">Uno por cada mes que llevamos juntitas.</p>
+          <button class="button button-primary button-full" id="heartContinue" type="button" hidden>Continuar <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <section class="screen" id="cap4" aria-live="polite" hidden>
+        <p class="eyebrow">Y todavía hay más</p>
+        <h2>Te amo… lo sabías?</h2>
+        <p class="copy">.</p>
+        <button class="button button-primary button-full" id="openOptions" type="button">Descubrir <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="screen" id="options" aria-live="polite" hidden>
+        <p class="eyebrow">Abre las que quieras</p>
+        <h2>Hay unas cositas para ti</h2>
+        <p class="copy">Puedes leerlas en el orden que quieras, tu elije mi reina <span id="readCount">0 de 3 leídas</span></p>
+        <div class="option-list">
+          <button class="option-button" type="button" data-message="amo">
+            <span class="option-number">01</span><span class="option-name">Lo que haces en mí</span><span class="option-state">Abrir →</span>
+          </button>
+          <button class="option-button" type="button" data-message="admiro">
+            <span class="option-number">02</span><span class="option-name">Esas cosillas que noto en ti</span><span class="option-state">Abrir →</span>
+          </button>
+          <button class="option-button" type="button" data-message="sueno">
+            <span class="option-number">03</span><span class="option-name">Todo lo que sueño cumplir contigo</span><span class="option-state">Abrir →</span>
+          </button>
+        </div>
+        <div class="all-done" id="allDone" hidden>
+          <p class="copy">Me queda una última cosita para ti 🤍</p>
+          <button class="button button-primary button-full" id="showFinal" type="button">Leer el final <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <section class="screen" id="message" aria-live="polite" hidden>
+        <p class="eyebrow" id="messageEyebrow">Para ti</p>
+        <h2 id="messageTitle"></h2>
+        <div class="message-card" id="messageText"></div>
+        <button class="button button-soft button-full" id="backToOptions" type="button">Volver a las opciones</button>
+      </section>
+
+      <section class="screen" id="final" aria-live="polite" hidden>
+        <div class="final-heart" aria-hidden="true">♡</div>
+        <p class="eyebrow">10 dew toda una vida juntasz</p>
+        <h2>Felices diez meses mi chinita 🤍</h2>
+        <p class="copy">Gracias por elegirme, por ser y por estar; gracias por ser tú.</p>
+        <p class="copy">
+          Volvería a vivir absolutamente todo en mi vida solo para volver a coincidir contigo, ver esos preciosos chinos y perderme en ti
+          una y otra vez.
+        </p>
+        <p class="copy blue-text"><strong>Te amo 🤍</strong></p>
+        <button class="button button-soft button-full" id="restartButton" type="button">Volver al inicio</button>
+      </section>
+    </div>
+
+    <div class="secret-area">
+      <button class="secret-button" id="secretButton" type="button" aria-expanded="false">un detallito secreto</button>
+      <p class="secret-text" id="secretText" hidden>Quiero mucho MUA MUA contigo todita la vida. 🤍</p>
+    </div>
+  </main>
+
+  <script>
+    const screens = ["intro", "cap1", "cap2", "cap3", "cap4", "options", "message", "final"]
+      .map((id) => document.getElementById(id));
+    const stepIndicator = document.getElementById("stepIndicator");
+    const viewed = new Set();
+    let heartCount = 0;
+
+    const messages = {
+      amo: {
+        title: "Lo que haces en mí",
+        text: "Llegaste a mi vida y, sin darte cuenta, te convertiste en una de mis partes favoritas de ella. Contigo he descubierto que el amor también está en las cosas más sencillas: en verte llegar por mí, en nuestras idas al gym, en escucharte contarme tu día y en esos ratitos en los que puedo abrazarte y sentir que estoy justo donde quiero estar. No sabes lo bonito que es tenerte en mi vida, corazón de melón. 🤍"
+      },
+      admiro: {
+        title: "Las pequeñas cosas tuyas",
+        text: "Me encanta perderme en ti y notar esas cosas que quizá tú no notas. Comezando con como caen tus preciosos chinos cuando traes tu pelito suelto, cómo te ves con tu reloj y la forma en la que siempre lo acomodas de una manera casi imperceptible, tus gestos, tu manera de hablarme y esa forma tan tuya de hacerme sentir querida, la forma tan particular que se ven tus ojitos cuando sonries y te ríse y el notar que tus pestañas siempre resaltan mas que tus cejas si te miro desde arriba. Me gusta descubrir cosas nuevas de ti, quiero notar esos pequeños detallitos TODA la vida 🤍"
+      },
+      sueno: {
+        title: "Todo lo que imagino contigo",
+        text: "Quiero pasar todos los domingos contigo, seguir con esas escapaditas del gym, continuar con las llamadas imprudentes mientras manejas, y reirme a carcajadas contigo hasta terminar tosiendo por la edad. Quiero acompañarte en tus días bonitos y también cuando el trabajo te pese demasiado; celebrar tus logros, conocer más de ti y seguir encontrando nuevas razones para enamorarme. Me emociona pensar en todo lo que todavía nos falta vivir, en los años que vienen y en todas las versiones de nosotras que aún no conocemos. Yo quiero seguir eligiéndote, mi amor. Por muchísimos meses mas... por toda una vida 🤍"
+      }
+    };
+
+    function showScreen(id, step) {
+      screens.forEach((screen) => {
+        screen.hidden = screen.id !== id;
+        screen.classList.remove("enter");
+      });
+
+      const active = document.getElementById(id);
+      active.classList.add("enter");
+      stepIndicator.textContent = String(step).padStart(2, "0") + " / 06";
+    }
+
+    document.getElementById("startButton").addEventListener("click", () => showScreen("cap1", 2));
+    document.getElementById("next1").addEventListener("click", () => showScreen("cap2", 3));
+    document.getElementById("next2").addEventListener("click", () => showScreen("cap3", 4));
+
+    document.getElementById("heartButton").addEventListener("click", (event) => {
+      if (heartCount >= 10) return;
+
+      heartCount += 1;
+      document.getElementById("heartCount").textContent = heartCount + " de 10 corazoncitos";
+      document.getElementById("heartFill").style.width = (heartCount * 10) + "%";
+      event.currentTarget.textContent = "♥";
+
+      if (heartCount === 10) {
+        event.currentTarget.disabled = true;
+        document.getElementById("heartHint").textContent = "Diez meses, diez corazoncitos para ti.";
+        document.getElementById("heartContinue").hidden = false;
+      }
+    });
+
+    document.getElementById("heartContinue").addEventListener("click", () => showScreen("cap4", 5));
+    document.getElementById("openOptions").addEventListener("click", () => showScreen("options", 5));
+
+    document.querySelectorAll("[data-message]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.message;
+        const item = messages[key];
+        viewed.add(key);
+
+        document.getElementById("messageEyebrow").textContent = "Una cosita para ti";
+        document.getElementById("messageTitle").textContent = item.title;
+        document.getElementById("messageText").textContent = item.text;
+        document.getElementById("readCount").textContent = viewed.size + " de 3 leídas";
+
+        button.classList.add("is-seen");
+        button.querySelector(".option-state").textContent = "Leído ✓";
+        document.getElementById("allDone").hidden = viewed.size !== 3;
+        showScreen("message", 5);
+      });
+    });
+
+    document.getElementById("backToOptions").addEventListener("click", () => {
+      showScreen("options", 5);
+    });
+
+    document.getElementById("showFinal").addEventListener("click", () => showScreen("final", 6));
+
+    document.getElementById("restartButton").addEventListener("click", () => {
+      heartCount = 0;
+      viewed.clear();
+      document.getElementById("heartCount").textContent = "0 de 10 corazoncitos";
+      document.getElementById("heartFill").style.width = "0%";
+      document.getElementById("heartHint").textContent = "Uno por cada mes que llevamos juntos.";
+      document.getElementById("heartButton").textContent = "♡";
+      document.getElementById("heartButton").disabled = false;
+      document.getElementById("heartContinue").hidden = true;
+      document.getElementById("readCount").textContent = "0 de 3 leídas";
+      document.getElementById("allDone").hidden = true;
+
+      document.querySelectorAll(".option-button").forEach((button) => {
+        button.classList.remove("is-seen");
+        button.querySelector(".option-state").textContent = "Abrir →";
+      });
+
+      showScreen("intro", 1);
+    });
+
+    document.getElementById("secretButton").addEventListener("click", (event) => {
+      const secret = document.getElementById("secretText");
+      secret.hidden = !secret.hidden;
+      event.currentTarget.setAttribute("aria-expanded", String(!secret.hidden));
+    });
+  </script>
+</body>
+</html>
